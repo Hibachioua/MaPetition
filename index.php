@@ -1,5 +1,5 @@
 
 <?php
-header('Location:Traitement/AjouterSignature.php');
+header('Location:Traitement/Signature.php');
 exit;
 ?>

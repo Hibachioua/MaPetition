@@ -1,10 +1,10 @@
 <?php
 // 1. Inclure la connexion et le modèle
-require_once '../Connexion.php';
-require_once '../models/SignatureModel.php';
+require_once '../BD/connexion.php';
+require_once '../BD/models/SignatureModel.php';
 
-// 2. (Optionnel) Vous pouvez déclarer une classe « AjouterSignature » si vous voulez un contrôleur orienté objet
-class AjouterSignature
+// 2. (Optionnel) Vous pouvez déclarer une classe « Signature » si vous voulez un contrôleur orienté objet
+class Signature
 {
     private $signatureModel;
 
@@ -54,5 +54,5 @@ class AjouterSignature
     }
 }
 // 3. Instancier le contrôleur et gérer la requête
-$controller = new AjouterSignature();
+$controller = new Signature();
 $controller->handleRequest();
