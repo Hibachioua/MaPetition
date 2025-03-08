@@ -25,12 +25,12 @@
                 
                 <ul class="nav-menu" id="navMenu">
                     <li><a href="index.php" class="nav-link">Accueil</a></li>
-                    <li><a href="?page=listePetition" class="nav-link">Pétitions</a></li>
+                    <li><a href="../Traitement/petition.php?action=lister" class="nav-link">Pétitions</a></li>
                     <li><a href="#" class="nav-link">Victoires</a></li>
                     <li><a href="#" class="nav-link">Comment ça marche</a></li>
                 </ul>
                 
-                <a href="?page=creerPetition" class="btn btn-primary">Créer une pétition</a>
+                <a href="petition.php?action=creer" class="btn btn-primary">Créer une Pétition</a>
             </nav>
             
             <div class="hero">
@@ -38,8 +38,8 @@
                 <p class="hero-subtitle">Lancez votre pétition aujourd'hui et mobilisez une communauté pour faire entendre votre voix</p>
                 
                 <div class="hero-actions">
-                    <a href="?page=creerPetition" class="btn btn-primary">Lancer une pétition</a>
-                    <a href="?page=listePetition" class="btn btn-secondary">Explorer les pétitions</a>
+                <a href="../Traitement/petition.php?action=lister" class="btn btn-secondary">Voir les Pétitions</a>
+                <a href="../Traitement/petition.php?action=creer" class="btn btn-primary">Créer une Pétition</a>
                 </div>
                 
                 <div class="stats-bar">
