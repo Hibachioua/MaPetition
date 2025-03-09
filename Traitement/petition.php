@@ -13,7 +13,6 @@ if (isset($_GET['action'])) {
             exit();
 
             case 'creer':
-                // Logique pour créer une pétition
                 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $Titre = $_POST['Titre'];
                     $Description = $_POST['Description'];
@@ -36,7 +35,6 @@ if (isset($_GET['action'])) {
                     } else {
                         $_SESSION['error_message'] = "Une erreur s'est produite lors de la création de la pétition.";
                     }
-            
                     header('Location: ../IHM/ListePetition.php');
                     exit();
                 } else {
