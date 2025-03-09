@@ -56,8 +56,7 @@ $petitions = $_SESSION['petitions'] ?? [];
                                 <p class="card-text"><?php echo htmlspecialchars($petition['Description']); ?></p>
                                 <em>Publié le : <?php echo htmlspecialchars($petition['DatePublic']); ?></em>
                                 <div class="card-footer">
-                                    <a href="signature.php?id=<?php echo $petition['IDP']; ?>" class="btn btn-primary">Signer cette pétition</a>
-                                </div>
+                                <a href="../IHM/Signature/addSignature.php?id=<?php echo $petition['IDP']; ?>" class="btn btn-primary">Signer cette pétition</a>                                </div>
                             </div>
                         </div>
                     <?php endforeach; ?>

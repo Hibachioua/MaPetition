@@ -1,5 +1,5 @@
 
 <?php
-header('Location:Traitement/Signature.php');
+header('Location:Traitement/petition.php');
 exit;
 ?>
