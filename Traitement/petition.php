@@ -12,9 +12,35 @@ if (isset($_GET['action'])) {
             header('Location: ../IHM/ListePetition.php');
             exit();
 
-        case 'creer':
-            header('Location: ../IHM/creerPetition.php');
-            exit();
+            case 'creer':
+                if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                    $Titre = $_POST['Titre'];
+                    $Description = $_POST['Description'];
+                    $DateFinP = $_POST['DateFinP'];
+                    $PorteurP = $_POST['PorteurP'];
+                    $Email = $_POST['Email'];
+            
+                    $data = [
+                        'Titre' => $Titre,
+                        'Description' => $Description,
+                        'DateFinP' => $DateFinP,
+                        'PorteurP' => $PorteurP,
+                        'Email' => $Email
+                    ];
+                    if (createPetition($data)) {
+                        $_SESSION['success_message'] = "La pétition a été créée avec succès.";
+                        $petitions = getAllPetitions();
+                        header('Location: ../Traitement/petition.php?action=lister');
+                    } else {
+                        $_SESSION['error_message'] = "Une erreur s'est produite lors de la création de la pétition.";
+                    }
+                    header('Location: ../Traitement/petition.php?action=lister');
+                    exit();
+                } else {
+                    header('Location: ../IHM/creerPetition.php');
+                    exit();
+                }
+
 
         case 'modifier':
         
