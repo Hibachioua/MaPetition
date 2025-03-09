@@ -1,11 +1,6 @@
 <?php
-require_once 'connexion.php';
+require_once '../BD/connexion.php';
 
-/**
- * Récupère toutes les pétitions de la base de données
- * Triées par date de publication décroissante
- * @return array Tableau associatif contenant toutes les pétitions
- */
 function getAllPetitions() {
     $connexion = connexionBD();
     if ($connexion) {
@@ -21,11 +16,6 @@ function getAllPetitions() {
     return [];
 }
 
-/**
- * Compte le nombre de signatures pour une pétition donnée
- * @param int $id L'identifiant de la pétition
- * @return int Le nombre de signatures
- */
 function countSignaturesByPetitionId($id) {
     $connexion = connexionBD();
     if ($connexion) {

@@ -26,8 +26,8 @@
                 <ul class="nav-menu" id="navMenu">
                     <li><a href="index.php" class="nav-link">Accueil</a></li>
                     <li><a href="../Traitement/petition.php?action=lister" class="nav-link">Pétitions</a></li>
-                    <li><a href="#" class="nav-link">Victoires</a></li>
-                    <li><a href="#" class="nav-link">Comment ça marche</a></li>
+                    <li><a href="#victoire" class="nav-link">Victoires</a></li>
+                    <li><a href="#comment_ca_marche" class="nav-link">Comment ça marche</a></li>
                 </ul>
                 
                 <a href="petition.php?action=creer" class="btn btn-primary">Créer une Pétition</a>
@@ -60,7 +60,7 @@
         </div>
     </header>
     
-    <section class="featured">
+    <section class="featured" id="victoire">
         <div class="container">
             <h2 class="section-title">Récentes victoires</h2>
             <p class="section-subtitle">Découvrez comment des citoyen·ne·s comme vous ont réussi à créer un impact positif</p>
@@ -131,7 +131,7 @@
     
     <section class="how-it-works">
         <div class="container">
-            <h2 class="section-title">Comment ça marche</h2>
+            <h2 class="section-title" id="comment_ca_marche" >Comment ça marche</h2>
             <p class="section-subtitle">Trois étapes simples pour faire entendre votre voix et créer du changement</p>
             
             <div class="steps">
