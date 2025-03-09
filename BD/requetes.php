@@ -41,4 +41,32 @@ function countSignaturesByPetitionId($id) {
     }
     return 0;
 }
+function createPetition($data) {
+    global $connexion;
+    
+    // Si la connexion n'existe pas déjà, on la crée
+    if (!isset($connexion) || $connexion === null) {
+        $connexion = connexionBD();
+    }
+    
+    if ($connexion) {
+        try {
+            // Utiliser NOW() pour la date de publication
+            $requete = $connexion->prepare(
+                "INSERT INTO petition (Titre, Description, DatePublic, DateFinP, PorteurP, Email)
+                 VALUES (:Titre, :Description, NOW(), :DateFinP, :PorteurP, :Email)"
+            );
+            $requete->bindParam(':Titre', $data['Titre']);
+            $requete->bindParam(':Description', $data['Description']);
+            $requete->bindParam(':DateFinP', $data['DateFinP']);
+            $requete->bindParam(':PorteurP', $data['PorteurP']);
+            $requete->bindParam(':Email', $data['Email']);
+            return $requete->execute();
+        } catch(PDOException $e) {
+            echo "Erreur lors de la création de la pétition : " . $e->getMessage();
+            return false;
+        }
+    }
+    return false;
+}
 ?>
