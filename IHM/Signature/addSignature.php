@@ -11,7 +11,7 @@
          Le formulaire pointe vers l’action 'add' du contrôleur 'signature'.
          Adaptez l’URL (action du formulaire) en fonction de votre routing. 
     -->
-    <form action="index.php?controller=signature&action=add" method="POST">
+    <form action="/MAPETITION/Traitement/Signature.php" method="POST">
         
         <div>
             <label for="IDP">ID de la pétition :</label>

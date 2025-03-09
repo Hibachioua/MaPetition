@@ -1,58 +1,53 @@
 <?php
-// 1. Inclure la connexion et le modèle
+// Activer l'affichage des erreurs pour le débogage
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+// Inclure les fichiers nécessaires
 require_once '../BD/connexion.php';
 require_once '../BD/models/SignatureModel.php';
 
-// 2. (Optionnel) Vous pouvez déclarer une classe « Signature » si vous voulez un contrôleur orienté objet
-class Signature
-{
-    private $signatureModel;
-
-    public function __construct()
-    {
-        // Connexion à la base
-        $db = Connexion::connect();
-
-        // Instancier le modèle
-        $this->signatureModel = new SignatureModel($db);
-    }
-
-    public function handleRequest()
-    {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Récupération des données du formulaire
-            $data = [
-                'IDP'    => $_POST['IDP'] ?? null,
-                'Nom'    => $_POST['Nom'] ?? '',
-                'Prenom' => $_POST['Prenom'] ?? '',
-                'Pays'   => $_POST['Pays'] ?? '',
-                'Date'   => $_POST['Date'] ?? '',
-                'Heure'  => $_POST['Heure'] ?? '',
-                'Email'  => $_POST['Email'] ?? ''
-            ];
-
-            // Insérer dans la base via le modèle
-            $this->signatureModel->createSignature($data);
-
-            // Redirection ou affichage d'un message
-            header('Location: ../index.php'); 
-            exit;
+// Vérifier si le formulaire a été soumis
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Afficher les données reçues pour débogage
+    echo "<pre>Données reçues : ";
+    print_r($_POST);
+    echo "</pre>";
+    
+    // Récupérer les données du formulaire
+    $data = [
+        'IDP'    => $_POST['IDP'] ?? null,
+        'Nom'    => $_POST['Nom'] ?? '',
+        'Prenom' => $_POST['Prenom'] ?? '',
+        'Pays'   => $_POST['Pays'] ?? '',
+        'Date'   => $_POST['Date'] ?? date('Y-m-d'),
+        'Heure'  => $_POST['Heure'] ?? date('H:i:s'),
+        'Email'  => $_POST['Email'] ?? ''
+    ];
+    
+    // Vérifier que les données essentielles sont présentes
+    if (empty($data['IDP']) || empty($data['Nom']) || empty($data['Email'])) {
+        echo "Erreur : Données manquantes. Veuillez remplir tous les champs obligatoires.";
+    } else {
+        // Essayer d'insérer la signature
+        $result = createSignature($data);
+        
+        if ($result) {
+            // Redirection en cas de succès
+            echo "Signature ajoutée avec succès !";
+            echo "<p><a href='../IHM/index.php'>Retour à l'accueil</a></p>";
+            // Décommentez la ligne suivante une fois que tout fonctionne
+            // header('Location: ../IHM/index.php?success=1');
+            // exit;
         } else {
-            // Afficher le formulaire
-            require_once '../views/signature/addSignature.php';
+            echo "Erreur lors de l'ajout de la signature. Veuillez réessayer.";
+            echo "<p><a href='../IHM/signature/addSignature.php'>Retour au formulaire</a></p>";
         }
     }
-
-    /**
-     * Exemple : afficher la liste des signatures (à adapter)
-     */
-    public function list()
-    {
-        // Ici vous pourriez récupérer toutes les signatures depuis le modèle 
-        // et passer les données à la vue correspondante
-        // require 'views/signature/list.php';
-    }
+} else {
+    // Si ce n'est pas une soumission POST, rediriger vers le formulaire
+    header('Location: ../IHM/signature/addSignature.php');
+    exit;
 }
-// 3. Instancier le contrôleur et gérer la requête
-$controller = new Signature();
-$controller->handleRequest();
+?>

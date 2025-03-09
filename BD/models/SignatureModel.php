@@ -9,7 +9,13 @@ require_once '../BD/connexion.php';
 
  */
 function createSignature($data) {
-    $connexion = connexionBD();
+    global $connexion;
+    
+    // Si la connexion n'existe pas déjà, on la crée
+    if (!isset($connexion) || $connexion === null) {
+        $connexion = connexionBD();
+    }
+    
     if ($connexion) {
         try {
             $requete = $connexion->prepare(
