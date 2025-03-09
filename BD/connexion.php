@@ -17,4 +17,5 @@ function connexionBD() {
         return null;
     }
 }
+
 ?>
