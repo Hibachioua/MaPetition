@@ -34,7 +34,7 @@ $petitions = $_SESSION['petitions'] ?? [];
                     <li><a href="#" class="nav-link">Comment ça marche</a></li>
                 </ul>
                 
-                <a href="petition.php?action=creer" class="btn btn-primary">Créer une Pétition</a>
+                <a href="creerPetition.php" class="btn btn-primary">Créer une Pétition</a>
             </nav>
         </div>
     </header>
