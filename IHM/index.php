@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="assets/style.css">
 
 </head>
+
 <body>
     <header>
         <div class="wave"></div>
@@ -25,12 +26,12 @@
                 
                 <ul class="nav-menu" id="navMenu">
                     <li><a href="index.php" class="nav-link">Accueil</a></li>
-                    <li><a href="../Traitement/petition.php?action=lister" class="nav-link">Pétitions</a></li>
+                    <li><a href="../Traitement/controllers/PetitionController.php?action=lister" class="nav-link">Pétitions</a></li>
                     <li><a href="#victoire" class="nav-link">Victoires</a></li>
                     <li><a href="#comment_ca_marche" class="nav-link">Comment ça marche</a></li>
                 </ul>
                 
-                <a href="petition.php?action=creer" class="btn btn-primary">Créer une Pétition</a>
+                <a href="../Traitement/controllers/PetitionController.php?action=creer" class="btn btn-primary">Créer une Pétition</a>
             </nav>
             
             <div class="hero">
@@ -38,8 +39,8 @@
                 <p class="hero-subtitle">Lancez votre pétition aujourd'hui et mobilisez une communauté pour faire entendre votre voix</p>
                 
                 <div class="hero-actions">
-                <a href="../Traitement/petition.php?action=lister" class="btn btn-secondary">Voir les Pétitions</a>
-                <a href="../Traitement/petition.php?action=creer" class="btn btn-primary">Créer une Pétition</a>
+                <a href="../Traitement/controllers/PetitionController.php?action=lister" class="btn btn-secondary">Voir les Pétitions</a>
+                <a href="../Traitement/controllers/PetitionController.php?action=creer" class="btn btn-primary">Créer une Pétition</a>
                 </div>
                 
                 <div class="stats-bar">
@@ -172,9 +173,9 @@
                     <!-- Placeholder for avatar -->
                     <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #e94057 0%, #f27121 100%);"></div>
                 </div>
-                <p class="testimonial-text">"Grâce à notre pétition qui a rassemblé plus de 2000 signatures, nous avons réussi à convaincre la mairie de préserver notre parc municipal au lieu de le transformer en centre commercial. C'est une victoire importante pour notre communauté et l'environnement."</p>
-                <p class="testimonial-author">Sophie Martin</p>
-                <p class="testimonial-role">Militante écologiste</p>
+                <p class="testimonial-text">"Nous sommes ravis d'annoncer que notre pétition, qui a recueilli plus de 2000 signatures, a réussi à persuader la mairie de protéger notre parc municipal plutôt que de le convertir en centre commercial. C'est une victoire significative pour notre communauté et pour la protection de l'environnement."</p>
+                <p class="testimonial-author">Saad Barhrouj</p>
+                <p class="testimonial-role">Membre de l'association locale</p>
             </div>
         </div>
     </section>
@@ -184,7 +185,7 @@
             <div class="cta-content">
                 <h2 class="cta-title">Prêt à faire entendre votre voix ?</h2>
                 <p class="cta-text">Rejoignez des milliers de personnes qui ont déjà créé du changement grâce à leurs pétitions.</p>
-                <a href="?page=creerPetition" class="cta-button">Créer ma pétition maintenant</a>
+                <a href="../Traitement/controllers/PetitionController.php?action=creer" class="cta-button">Créer ma pétition maintenant</a>
             </div>
         </div>
     </section>

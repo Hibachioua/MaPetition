@@ -1,5 +1,5 @@
 
 <?php
-header('Location:Traitement/petition.php');
+header('Location:Traitement/controllers/PetitionController.php');
 exit;
 ?>

@@ -10,8 +10,8 @@ $petitions = $_SESSION['petitions'] ?? [];
     <title>PétitionAction - Plateforme de pétitions en ligne</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="assets/style.css">
-
+    <link rel="stylesheet" href="../assets/style.css">
+    <link rel="stylesheet" href="css/listPetitionStyle.css">
 </head>
 <body>
     <header>
@@ -22,27 +22,45 @@ $petitions = $_SESSION['petitions'] ?? [];
                     <i class="fas fa-signature"></i>
                     PétitionAction
                 </a>
-                
                 <button class="menu-toggle" id="menuToggle">
                     <i class="fas fa-bars"></i>
                 </button>
-                
                 <ul class="nav-menu" id="navMenu">
-                    <li><a href="index.php" class="nav-link">Accueil</a></li>
-                    <li><a href="../Traitement/petition.php?action=lister" class="nav-link">Pétitions</a></li>
-                    <li><a href="#" class="nav-link">Victoires</a></li>
-                    <li><a href="#" class="nav-link">Comment ça marche</a></li>
+                    <li><a href="../index.php" class="nav-link">Accueil</a></li>
+                    <li><a href="../../Traitement/controllers/PetitionController.php?action=lister" class="nav-link">Pétitions</a></li>
+                    <li><a href="../index.php#victoire" class="nav-link">Victoires</a></li>
+                    <li><a href="../index.php#comment_ca_marche" class="nav-link">Comment ça marche</a></li>
                 </ul>
-                
-                <a href="petition.php?action=creer" class="btn btn-primary">Créer une Pétition</a>
+                <a href="../../Traitement/controller/PetitionController.php?action=creer" class="btn btn-primary">Créer une Pétition</a>
             </nav>
         </div>
     </header>
+
+    <div id="notificationContainer" class="notification-container"></div>
 
     <section class="featured">
         <div class="container">
             <h2 class="section-title">Liste des Pétitions</h2>
             <p class="section-subtitle">Découvrez les pétitions que vous pouvez soutenir</p>
+
+            <div id="topPetition" class="card">
+                <div class="card-image">
+                    <div class="card-image-bg"></div>
+                    <i class="fas fa-star"></i>
+                    <span class="victory-badge">Top Pétition</span>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Loading...</h3>
+                    <p class="card-text">Veuillez patienter pendant que nous récupérons la pétition avec le plus de signatures.</p>
+                    <div class="card-footer">
+                        <span class="signature-count">
+                            <i class="fas fa-signature"></i> 0 signatures
+                        </span>
+                        <a href="#" class="btn btn-primary" id="signTopPetitionBtn">Signer cette pétition</a>
+                    </div>
+                </div>
+            </div>
+
             <?php if (!empty($petitions)): ?>
                 <div class="card-grid">
                     <?php foreach ($petitions as $petition): ?>
@@ -54,9 +72,9 @@ $petitions = $_SESSION['petitions'] ?? [];
                             <div class="card-content">
                                 <h3 class="card-title"><?php echo htmlspecialchars($petition['Titre']); ?></h3>
                                 <p class="card-text"><?php echo htmlspecialchars($petition['Description']); ?></p>
-                                <em>Publié le : <?php echo htmlspecialchars($petition['DatePublic']); ?></em>
+                                <em>Publié le : <?php echo date("d-m-Y", strtotime($petition['DatePublic'])); ?> à <?php echo date("H:i", strtotime($petition['DatePublic'])); ?></em>
                                 <div class="card-footer">
-                                <a href="../Traitement/signature.php?action=creerSignature&id=<?php echo $petition['IDP']; ?>" class="btn btn-primary">Signer cette pétition</a>
+                                    <a href="../../Traitement/controllers/SignatureController.php?action=creerSignature&id=<?php echo $petition['IDP']; ?>" class="btn btn-primary">Signer cette pétition</a>
                                 </div>
                             </div>
                         </div>
@@ -80,7 +98,6 @@ $petitions = $_SESSION['petitions'] ?? [];
                         <li><a href="#"><i class="fas fa-envelope"></i> Contact</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-column">
                     <h3>Ressources</h3>
                     <ul class="footer-links">
@@ -90,7 +107,6 @@ $petitions = $_SESSION['petitions'] ?? [];
                         <li><a href="#"><i class="fas fa-list-alt"></i> Blog</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-column">
                     <h3>Légal</h3>
                     <ul class="footer-links">
@@ -100,7 +116,6 @@ $petitions = $_SESSION['petitions'] ?? [];
                         <li><a href="#"><i class="fas fa-gavel"></i> Règles de la communauté</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-column">
                     <h3>Suivez-nous</h3>
                     <ul class="footer-links">
@@ -111,11 +126,13 @@ $petitions = $_SESSION['petitions'] ?? [];
                     </ul>
                 </div>
             </div>
-            
             <div class="footer-bottom">
                 <p>&copy; 2023 PétitionAction. Tous droits réservés.</p>
             </div>
         </div>
     </footer>
+
+    <script src="js/topPetition.js"></script>
+    <script src="js/notifications.js"></script>
 </body>
 </html>

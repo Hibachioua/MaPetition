@@ -31,7 +31,7 @@ body {
 
 .container {
     width: 100%;
-    max-width: 1200px;
+    max-width: 600px; /* Réduction de la largeur maximale */
     margin: 0 auto;
     padding: 20px;
 }
@@ -39,11 +39,10 @@ body {
 .page-header {
     text-align: center;
     margin-bottom: 40px;
-    position: relative;
 }
 
 .page-title {
-    font-size: 2.5rem;
+    font-size: 2rem; /* Ajustement de la taille pour une meilleure présentation */
     font-weight: 700;
     margin-bottom: 10px;
     background: var(--primary-gradient);
@@ -53,22 +52,17 @@ body {
 }
 
 .page-subtitle {
-    font-size: 1.1rem;
+    font-size: 1rem; /* Ajustement de la taille */
     color: var(--gray);
     max-width: 600px;
     margin: 0 auto;
 }
 
-.signature-form-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
+.petition-form-container {
     margin-top: 20px;
 }
 
 .form-section {
-    flex: 1;
-    min-width: 300px;
     background: var(--white);
     border-radius: var(--radius);
     box-shadow: var(--card-shadow);
@@ -110,11 +104,11 @@ body {
 
 .form-control {
     width: 100%;
-    padding: 12px 15px;
+    padding: 10px; /* Légèrement réduit pour un look plus compact */
     border: 1px solid var(--border);
     border-radius: 8px;
     font-family: 'Poppins', sans-serif;
-    font-size: 1rem;
+    font-size: 0.9rem; /* Réduction de la taille de la police */
     color: var(--dark);
     transition: all 0.3s ease;
 }
@@ -125,10 +119,6 @@ body {
     box-shadow: 0 0 0 3px rgba(233, 64, 87, 0.2);
 }
 
-.form-control::placeholder {
-    color: #adb5bd;
-}
-
 .form-actions {
     margin-top: 30px;
     text-align: center;
@@ -136,142 +126,54 @@ body {
 
 .btn {
     display: inline-block;
-    padding: 13px 28px;
+    padding: 10px 20px; /* Ajustement du padding pour être plus compact */
     border-radius: 30px;
     text-decoration: none;
     font-weight: 600;
     transition: all 0.4s ease;
     border: none;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 0.9rem; /* Réduction de la taille de la police */
     position: relative;
     overflow: hidden;
     z-index: 1;
-}
-
-.btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.1);
-    transition: width 0.4s ease;
-    z-index: -1;
-}
-
-.btn:hover::before {
-    width: 100%;
-}
-
-.btn-primary {
     background: var(--primary-gradient);
     color: var(--white);
 }
 
-.btn-primary:hover {
+.btn:hover {
     box-shadow: 0 4px 15px rgba(233, 64, 87, 0.4);
     transform: translateY(-3px);
 }
 
-.recent-signatures {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.signatures-list {
-    flex-grow: 1;
-    overflow-y: auto;
-    margin-top: 20px;
-}
-
-.signature-item {
-    padding: 15px 20px;
-    border-radius: 8px;
-    background-color: #f8f9fa;
-    margin-bottom: 15px;
-    border-left: 4px solid var(--primary);
-    transition: all 0.3s ease;
-}
-
-.signature-item:hover {
-    transform: translateX(5px);
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-}
-
-.signature-name {
-    font-weight: 600;
-    font-size: 1rem;
-    margin-bottom: 5px;
-    color: var(--dark);
-}
-
-.signature-meta {
-    display: flex;
-    justify-content: space-between;
-    color: var(--gray);
-    font-size: 0.85rem;
-}
-
-.loading-spinner {
-    display: none;
-    text-align: center;
-    margin: 20px 0;
-}
-
-.spinner {
-    width: 40px;
-    height: 40px;
-    border: 4px solid rgba(233, 64, 87, 0.1);
-    border-radius: 50%;
-    border-top: 4px solid var(--primary);
-    animation: spin 1s linear infinite;
-    margin: 0 auto;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-.success-message {
-    display: none;
-    background-color: rgba(0, 205, 172, 0.1);
-    border-left: 4px solid var(--success);
+.error-message, .success-message {
+    display: block;
     padding: 15px;
-    margin-top: 20px;
     border-radius: 8px;
+    margin-top: 20px;
     color: var(--dark);
 }
 
 .error-message {
-    display: none;
     background-color: rgba(233, 64, 87, 0.1);
     border-left: 4px solid var(--primary);
-    padding: 15px;
-    margin-top: 20px;
-    border-radius: 8px;
-    color: var(--dark);
 }
 
-.form-note {
-    font-size: 0.85rem;
-    color: var(--gray);
-    margin-top: 5px;
+.success-message {
+    background-color: rgba(0, 205, 172, 0.1);
+    border-left: 4px solid var(--success);
 }
 
 @media (max-width: 768px) {
-    .signature-form-container {
+    .petition-form-container {
         flex-direction: column;
     }
-    
+
     .form-section {
         width: 100%;
     }
-    
+
     .page-title {
-        font-size: 2rem;
+        font-size: 1.8rem; /* Ajustement de la taille pour mobile */
     }
 }

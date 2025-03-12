@@ -1,0 +1,58 @@
+
+:root {
+    --primary: #e94057;
+    --primary-dark: #d81c3f;
+    --primary-gradient: linear-gradient(135deg, #e94057 0%, #f27121 100%);
+    --secondary: #4776E6;
+    --success: #00cdac;
+    --dark: #151515;
+    --light-gray: #f8f9fa;
+    --gray: #6c757d;
+    --white: #ffffff;
+    --border: #e9ecef;
+    --shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.1);
+    --card-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
+    --radius: 12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--dark);
+    line-height: 1.7;
+    background-color: var(--light-gray);
+    overflow-x: hidden;
+}
+
+.notification-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.notification {
+    background-color: var(--primary);
+    color: var(--white);
+    padding: 20px;
+    margin-bottom: 10px;
+    border: 2px solid var(--primary-dark);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    animation: fadeIn 0.5s;
+    transition: transform 0.3s ease;
+}
+
+.notification:hover {
+    transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
